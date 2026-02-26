@@ -8,7 +8,8 @@ function Funds(){
         <div className="row">
             <h4 className="text-muted">Equity</h4>
             <table className="border col-4 p-5 text-center" >
-               <tr>
+                <tbody>
+                     <tr>
                 <th>Available margin</th>
                 <td>4,043.10</td>
                </tr>
@@ -19,7 +20,10 @@ function Funds(){
                 <th>Available cash</th>
                 <td>4,040.10</td>
                </tr>
-               <hr />
+                
+                </tbody>
+              
+              
             </table>
         </div>
     </div>

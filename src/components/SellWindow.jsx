@@ -6,7 +6,7 @@ import axios from "axios";
 import GeneralContext from "./GeneralContext";
 
 import "./BuyActionWindow.css";
-
+const BACKEND_URL = import.meta.env.BACKEND_URL;
 const SellWindow = ({ uid }) => {
   
   const [stockQuantity, setStockQuantity] = useState(1);
@@ -19,7 +19,7 @@ const SellWindow = ({ uid }) => {
     
     
    
-       axios.post("http://localhost:8080/orders/sellOrder", {
+       axios.post(`${BACKEND_URL}/sellOrder`, {
       symbol: uid,
       qty: stockQuantity,
       price: Number(stockPrice),

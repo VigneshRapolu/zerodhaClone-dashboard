@@ -1,12 +1,13 @@
 import { useState } from "react"
 import { useNavigate,Link } from "react-router-dom";
-
+import allStore from "./hooks/hooks";
 import axios from "axios";
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 function Signup(){
     let [email,setEmail]=useState("");
     let [pwd,setPwd]=useState("");
+    const {makeUser}=allStore();
      let [name,setName]=useState("");
     const navigate=useNavigate();
     async function handleSubmit(e){
@@ -15,17 +16,18 @@ function Signup(){
         
         
         
-      axios.post("https://backend-zerodhaclone.onrender.com/signup",{
+      axios.post(`${BACKEND_URL}/signup`,{
             email:email,
             password:pwd,
             username:name
         },
 {
     withCredentials: true
-}).then((res)=>{
+}).then(async (res)=>{
           
            
             if(res.data.success){
+               await makeUser(true);
                 navigate("/");
             }else{
 

@@ -1,14 +1,15 @@
 import { create } from "zustand";
 import axios from "axios";
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const allStore=create((set)=>({
     holdings:[],
     watchList:[],
     orders:[],
+    user:false,
     fetchHoldings:async ()=>{
         try{
             set({loading:true});
-            const res=await axios.get("https://backend-zerodhaclone.onrender.com/holdings",{ withCredentials: true });
+            const res=await axios.get(`${BACKEND_URL}/holdings`,{ withCredentials: true });
             
             // console.log("in hooks",res.data);
            
@@ -26,7 +27,7 @@ const allStore=create((set)=>({
             // console.log("fetching watchlist");
             
             set({loading:true});
-            const watchListRes=await axios.get("https://backend-zerodhaclone.onrender.com/watchList",{withCredentials:true});
+            const watchListRes=await axios.get(`${BACKEND_URL}/watchlist`,{withCredentials:true});
             // console.log("the data at fetching for watchlist",watchListRes.data);
             
             set({watchList:watchListRes.data,loading:false});
@@ -40,12 +41,21 @@ const allStore=create((set)=>({
             // console.log("fetching orders");
             
             set({loading:true});
-            const orderRes=await axios.get("https://backend-zerodhaclone.onrender.com/orders",{withCredentials:true});
+            const orderRes=await axios.get(`${BACKEND_URL}/orders`,{withCredentials:true});
             console.log(orderRes.data);
             
             set({orders:orderRes.data,loading:false});
         }catch(err){
             console.log(err);
+            set({loading:false});
+        }
+    },
+    makeUser:async(value)=>{
+        try{
+            set({loading:true});
+            set({user:value,loading:false});
+        }catch(err){
+            set({user:false});
             set({loading:false});
         }
     }

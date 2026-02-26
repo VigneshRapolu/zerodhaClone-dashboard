@@ -2,26 +2,21 @@ import { SpaRounded } from "@mui/icons-material";
 import {useEffect, useState} from "react"
 import {Link} from "react-router-dom"
 import axios from "axios";
+import allStore from "./hooks/hooks";
 import { useNavigate } from "react-router-dom";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 function Menu(){
+    const {user,makeUser}=allStore();
     const navigate=useNavigate();
     const [selectedMenu,setSelectedMenu]=useState(0);
     const [isProfileDropdown,setIsProfileDropdown]=useState(false);
     const Menuclass="menu selected";
     const activeMenu="menu";
-    const [user,setUser]=useState(null);
-    useEffect(()=>{
-
-        axios.get("http://localhost:8080/holdings",{withCredentials:true}).then((data)=>{
-            
-            
-            setUser(true);
-        }).catch((err)=>{
-            setUser(false);
-        })
-    },[])
+    
+    
     function handleLogout(){
-        axios.post("http://localhost:8080/logout",{},{withCredentials:true}).then((data)=>{
+        axios.post(`${BACKEND_URL}/logout`,{},{withCredentials:true}).then( async (data)=>{
+            await makeUser(false);
             navigate("/signin");
         }).catch((err)=>{
           

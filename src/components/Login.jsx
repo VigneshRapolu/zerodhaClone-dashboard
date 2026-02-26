@@ -1,28 +1,34 @@
 import { useState } from "react"
 import { useNavigate,Link } from "react-router-dom";
-
+import allStore from "./hooks/hooks";
 import axios from "axios";
 
-
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 function Login(){
     let [email,setEmail]=useState("");
     let [pwd,setPwd]=useState("");
     const navigate=useNavigate();
+    const {makeUser}=allStore();
     async function handleSubmit(e){
         e.preventDefault();
         
         
+        console.log("submitted cred");
         
-      axios.post("https://backend-zerodhaclone.onrender.com/login",{
+      axios.post(`${BACKEND_URL}/login`,{
             email:email,
             password:pwd
         },
 {
     withCredentials: true
-}).then((res)=>{
+}).then(async (res)=>{
         //    console.log(res);
            
             if(res.data.success){
+                
+                
+                await makeUser(true);
+                console.log('success login');
                 navigate("/");
             }else{
 

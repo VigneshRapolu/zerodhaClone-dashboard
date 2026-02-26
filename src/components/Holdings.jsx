@@ -116,15 +116,15 @@ function Holdings(){
             </div>
         </div>
         <div className="row">
-            <div className="col"><h3 className="mb-0 pb-0" style={{fontWeight:"400"}}>{investment.investment}.</h3><p>55</p>
+            <div className="col"><h3 className="mb-0 pb-0" style={{fontWeight:"400"}}>{investment.investment.toFixed(2)}.</h3><p></p>
             <p className="text-muted">Total investment</p>
             </div>
             <div className="col">
-                <h3 className="mb-0 pb-0" style={{fontWeight:"400"}}>{investment.currVal}</h3><p>95</p>
+                <h3 className="mb-0 pb-0" style={{fontWeight:"400"}}>{investment.currVal.toFixed(2)}</h3><p></p>
             <p className="text-muted">Current value</p>
             </div>
             <div className="col">
-                <h3 className="mb-5"  style={{fontWeight:"400",color:"green"}}>{investment.PL.toFixed(2)} ({`${investment.pnlPercent >= 0 ? "+" : ""}${(investment.pnlPercent ?? 0).toFixed(1)}%`})</h3><p> </p>
+                <h3 className="mb-5"  style={{fontWeight:"400",color:"green"}}>{investment.PL.toFixed(2)} ({`${investment.pnlPercent >= 0 ? "+" : ""}${(investment.pnlPercent ?? 0).toFixed(1)}%`})</h3>
             <p className="text-muted">P&L</p>
             </div>
         </div>
