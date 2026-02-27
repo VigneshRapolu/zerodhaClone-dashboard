@@ -15,15 +15,9 @@ function Menu(){
     
     
     function handleLogout(){
-        axios.post(`${BACKEND_URL}/logout`,{}).then( async (data)=>{
-            makeUser(false);
+       makeUser(false);
             localStorage.removeItem("token");
             navigate("/signin");
-        }).catch((err)=>{
-            
-            navigate("/");
-            
-        })
     }
     const handleMenuClick=(index)=>{
         setSelectedMenu(index);
