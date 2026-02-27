@@ -19,7 +19,7 @@ const SellWindow = ({ uid }) => {
     
     
    
-       axios.post(`${BACKEND_URL}/sellOrder`, {
+       axios.post(`${BACKEND_URL}/orders/sellOrder`, {
       symbol: uid,
       qty: stockQuantity,
       price: Number(stockPrice),

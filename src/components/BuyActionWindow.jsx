@@ -18,7 +18,7 @@ console.log(uid,"from buy action window");
     
     
     
-    axios.post(`${BACKEND_URL}/newOrder`, {
+    axios.post(`${BACKEND_URL}/orders/newOrder`, {
       symbol: uid,
       qty: stockQuantity,
       price: stockPrice,
