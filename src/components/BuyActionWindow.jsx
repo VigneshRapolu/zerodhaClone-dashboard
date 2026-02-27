@@ -71,12 +71,12 @@ console.log(uid,"from buy action window");
       <div className="buttons">
         <span>Margin required ₹140.65</span>
         <div>
-          <Link className="btn btn-blue" onClick={(e)=>handleBuyClick(e)}>
+          <button  className="btn btn-blue" onClick={(e)=>handleBuyClick(e)}>
             Buy
-          </Link>
-          <Link to="" className="btn btn-grey" onClick={handleCancelClick}>
+          </button>
+          <button to="" className="btn btn-grey" onClick={handleCancelClick}>
             Cancel
-          </Link>
+          </button>
         </div>
       </div>
     </div>
