@@ -1,7 +1,10 @@
 import TopBar from "./TopBar"
 import Dashboard from './Dashboard'
 import { useEffect } from "react";
+import allStore from "./hooks/hooks";
+
 function Home(){
+    const {makeUser}=allStore();
     useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
