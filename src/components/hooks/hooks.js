@@ -15,7 +15,12 @@ const allStore=create((set)=>({
     headers: {
         Authorization: `Bearer ${token}`
     }
+    
 });
+if (!token) {
+            set({ user: false, loading: false });
+            return;
+        }
             
             // console.log("in hooks",res.data);
            
@@ -47,11 +52,16 @@ const allStore=create((set)=>({
             // console.log("fetching orders");
             const token = localStorage.getItem("token");
             set({loading:true});
+            if (!token) {
+            set({ user: false, loading: false });
+            return;
+        }
             const orderRes=await axios.get(`${BACKEND_URL}/orders`, {
     headers: {
         Authorization: `Bearer ${token}`
     }
 });
+
             console.log(orderRes.data);
             
             set({orders:orderRes.data,loading:false});
