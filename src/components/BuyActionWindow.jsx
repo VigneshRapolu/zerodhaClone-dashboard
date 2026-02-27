@@ -8,6 +8,7 @@ import GeneralContext from "./GeneralContext";
 import "./BuyActionWindow.css";
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 const BuyActionWindow = ({ uid }) => {
+  const token = localStorage.getItem("token");
   const [stockQuantity, setStockQuantity] = useState(1);
   const [stockPrice, setStockPrice] = useState(10);
 console.log(uid,"from buy action window");
