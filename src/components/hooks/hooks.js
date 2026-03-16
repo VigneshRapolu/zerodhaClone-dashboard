@@ -39,7 +39,7 @@ if (!token) {
             // console.log("fetching watchlist");
             
             set({loading:true});
-            const watchListRes=await axios.get(`${BACKEND_URL}/watchlist`,{withCredentials:true});
+            const watchListRes=await axios.get(`${BACKEND_URL}/watchlist`);
             // console.log("the data at fetching for watchlist",watchListRes.data);
             
             set({watchList:watchListRes.data,loading:false});
